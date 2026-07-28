@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/users";
+const API_URL = "https://hccfan.onrender.com/api/users"; // Replace with your actual backend API URL
 
 function App() {
   const [users, setUsers] = useState([]);
