@@ -20,7 +20,6 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
-
 // Simple Health Check Endpoint
 app.get('/health', async (req, res) => {
   try {
@@ -34,8 +33,9 @@ app.get('/health', async (req, res) => {
     res.status(500).json({ status: 'Server error', database: err.message });
   }
 });
-// Catch-all route to serve the frontend for any other requests
-app.get('*', (req, res) => {
+
+// Catch-all route using parameters for modern path-to-regexp engine
+app.get('/*any', (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
